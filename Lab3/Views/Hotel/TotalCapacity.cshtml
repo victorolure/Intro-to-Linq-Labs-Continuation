@@ -1,0 +1,23 @@
+﻿@model List<Room>
+
+@if(@ViewBag.Message1 == 0)
+{
+    <h1>@ViewBag.Message3</h1>
+}
+else
+{
+    <h1>Total Rooms Available: @ViewBag.Message2</h1>
+}
+
+
+@foreach(Room r in Model){
+    if(r.Occupied == true){
+        <h3>Room @r.Number</h3>
+        <div>Capacity: @r.Capacity</div>
+        <div>Occupant(s): @r.Reservations.FirstOrDefault(r=>r.Current).Client.Name</div>
+    }else{
+        <h3>Room @r.Number</h3>
+    <div>Capacity: @r.Capacity</div>
+    <div>Occupant(s): 0</div>
+    }
+}

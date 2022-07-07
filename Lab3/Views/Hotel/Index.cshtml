@@ -1,0 +1,14 @@
+﻿@model List<Room>
+
+<h2>All Rooms in Hotel</h2>
+@foreach(Room r in Model){
+   
+    if(r.Occupied == true){
+        <h4>Room number: @r.Number</h4>
+        <div>OCCUPIED  OCCUPANTS: @r.Reservations.First(r=>r.Current).Occupants</div>
+    }else{
+        <h4>Room number: @r.Number</h4>
+        <div>Room capacity: @r.Capacity UNOCCUPIED</div>
+    }
+    
+}
